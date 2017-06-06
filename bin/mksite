@@ -1,0 +1,48 @@
+#!/bin/bash
+
+if [[ $EUID -ne 0 ]]; then
+   echo "mkwebite: need to run as root" 1>&2
+   exit 1
+fi
+
+# Variables
+BASENAME=$1
+SA_DIR=/etc/apache2/sites-available
+
+# Script Runnnnn
+echo "Website: ${BASENAME}"
+
+echo "Making ${BASENAME} directory in /var/www"
+mkdir -p /var/www/${BASENAME}/public_html
+if [ $? != 0 ] ; then echo "Error: Run as sudo" ; exit 1; fi
+
+echo "Copying default template"
+cp ~/default-vps-with-ssl.conf ${SA_DIR}/${BASENAME}.conf
+
+echo "Modifying default template"
+sed -i "s/__WEBSITE__/$BASENAME/g" ${SA_DIR}/${BASENAME}.conf
+
+### CHECK TO SEE IF THERE NEEDS TO BE A www.${BASENAME} LINE UNCOMMENTED IN THE CONFIG FILE FOR THE SITE
+while true; do
+    read -p 'Will this site need a "www" before it? (y/n) ' yn
+    case $yn in
+        [Yy]* ) echo "Ok, a ServerAlias was added."; sed '9 s/^ *#/    /' ${SA_DIR}/${BASENAME}.conf; WWW_FLAG="1"; break;;
+        [Nn]* ) echo "Ok, no ServerAlias will be added."; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo "Symlinking to sites-enabled"
+/usr/sbin/a2ensite ${BASENAME}.conf
+
+echo "Fixing permissions"
+fix_permissions
+
+echo "Restarting apache2"
+service apache2 reload
+
+echo "Generating an SSL Certificate"
+certbot --apache -d ${BASENAME}
+if [[ $WWW_FLAG == "1" ]]; then 
+    certbot --apache -d www.${BASENAME}
+fi
