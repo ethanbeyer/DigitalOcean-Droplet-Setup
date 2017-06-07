@@ -24,12 +24,18 @@
 
 ## All the server dependencies.
 
-- **essentials**
+### essentials
 ```
 sudo apt-get install build-essential
 ```
 
-- **certbot**
+### PHP extensions
+```
+sudo apt-get update
+sudo apt-get install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
+```
+
+### certbot
 ```
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
@@ -39,12 +45,12 @@ sudo apt-get update
 sudo apt-get install python-certbot-apache
 ```
 
-- **ruby**
+### ruby
 ```
 sudo apt install ruby
 ```
 
-- **linuxbrew**
+### linuxbrew
 ```    
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 ```
@@ -54,20 +60,29 @@ PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.bash_profile
 ```
 
-- **npm**
+### npm
 ```
 brew install node
 ```
 
-- **yarn**
+### yarn
 ```
 brew install yarn
 ```
 
-- **composer**
+### composer
 ```
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
+```
+
+
+## After all that...
+
+```
+sudo a2enmod rewrite
+sudo apache2ctl configtest
+sudo systemctl restart apache2
 ```
