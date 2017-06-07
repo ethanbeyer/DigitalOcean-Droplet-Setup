@@ -22,9 +22,8 @@ FLUSH PRIVILEGES;
 ## Fine-grained Server Configuration
 
 1. Log in as the user created in step 4
-2. Disable all sites: `sudo a2dissite ...`
-3. Add `user ALL = NOPASSWD : ALL` to `$ sudo visudo`
-4. Connect via FTP, add this repo to `/home/user`
+2. Add `user ALL = NOPASSWD : ALL` to `$ sudo visudo`
+3. Connect via FTP, add this repo to `/home/user`
 
 
 
