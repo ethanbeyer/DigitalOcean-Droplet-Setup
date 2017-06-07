@@ -29,3 +29,7 @@ rm /etc/apache2/sites-available/${BASENAME}.conf
 # restart apache2
 service apache2 reload
 service apache2 restart
+
+
+# Run this at the end to show what's enabled:
+a2query -s
