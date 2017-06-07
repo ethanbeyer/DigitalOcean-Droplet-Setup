@@ -32,7 +32,7 @@ sed -i "s/__WEBSITE__/$BASENAME/g" ${SA_DIR}/${BASENAME}.conf
 while true; do
     read -p 'Will this site need a "www" before it? (y/n) ' yn
     case $yn in
-        [Yy]* ) echo "Ok, a ServerAlias was added."; sed '9 s|^ *#|\t|' ${SA_DIR}/${BASENAME}.conf; WWW_FLAG="1"; break;;
+        [Yy]* ) echo "Ok, a ServerAlias was added."; sed '9 s/^ *#//' ${SA_DIR}/${BASENAME}.conf; WWW_FLAG="1"; break;;
         [Nn]* ) echo "Ok, no ServerAlias will be added."; break;;
         * ) echo "Please answer yes or no.";;
     esac
