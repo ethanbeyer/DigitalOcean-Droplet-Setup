@@ -12,7 +12,7 @@
 2. Run `mysql_secure_installation`
 3. [Create a server mysql user][2]:
 ```
-CREATE USER 'stonewall2.1'@'localhost' IDENTIFIED BY '.2938u—(u4hnsl$123iu099293+)@#1293uhLAS@!';
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON * . * TO 'stonewall2.1'@'localhost';
 FLUSH PRIVILEGES;
 ```
