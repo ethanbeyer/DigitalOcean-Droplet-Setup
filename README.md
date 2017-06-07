@@ -8,9 +8,9 @@
 
 ## Initial Server Configuration
 
-1. Follow through with [this article](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
+1. Follow through with [this article][1]
 2. Run `mysql_secure_installation`
-3. [Create a server mysql user](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)
+3. [Create a server mysql user][2]
 4. Log out as `root`
 
 ## Fine-grained Server Configuration
@@ -26,6 +26,7 @@
 
 ### essentials
 ```
+sudo apt-get update
 sudo apt-get install build-essential
 ```
 
@@ -37,6 +38,7 @@ sudo apt-get install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
 
 ### certbot
 ```
+sudo ufw allow 443
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 ```
@@ -57,7 +59,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master
 
 ```
 PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.bash_profile
+echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.profile
 ```
 
 ### npm
@@ -86,3 +88,6 @@ sudo a2enmod rewrite
 sudo apache2ctl configtest
 sudo systemctl restart apache2
 ```
+
+[1]: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
+[2]: https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
