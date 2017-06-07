@@ -31,7 +31,6 @@ To completely wipe a site from the server, run `sudo wipesite example.com`
 
 ## Installations
 ### essentials
-    cd
     sudo apt-get update
     sudo apt-get install build-essential
     sudo apt-get install zip
@@ -72,8 +71,10 @@ Put this in that file: `15 3 * * * /usr/bin/certbot renew --quiet`
     php -r "unlink('composer-setup.php');"
 
 ### /home/user/bin
-    sudo git clone https://github.com/ethanbeyer/DigitalOcean-Droplet-Setup.git
-    sudo chmod +x ~/bin/*
+    cd
+    git init
+    git add remote origin https://github.com/ethanbeyer/DigitalOcean-Droplet-Setup.git
+    git pull origin master
 
 ## Installation Cleanup
     sudo apt-get dist-upgrade
