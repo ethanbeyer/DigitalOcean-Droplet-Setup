@@ -44,8 +44,8 @@ echo "Symlinking to sites-enabled"
 echo "Restarting apache2"
 service apache2 reload
 
-# echo "Generating an SSL Certificate"
-# certbot --apache -d ${BASENAME}
-# if [[ $WWW_FLAG == "1" ]]; then 
-#     certbot --apache -d www.${BASENAME}
-# fi
+echo "Generating an SSL Certificate"
+certbot --apache -d ${BASENAME}
+if [[ $WWW_FLAG == "1" ]]; then 
+    certbot --apache -d www.${BASENAME}
+fi
