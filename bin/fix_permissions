@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [[ $EUID -ne 0 ]]; then
-   echo "fix_permissions: need to run as root" 1>&2
-   exit 1
-fi
+# if [[ $EUID -ne 0 ]]; then
+#    echo "fix_permissions: need to run as root" 1>&2
+#    exit 1
+# fi
 
-chown -R www-data:www-data /var/www
-chmod -R 775 /var/www
+# chown $USER:www-data /var/www/*
+# chmod -R 775 /var/www
 
-chmod 775 /etc/apache2/sites-available
-chmod 775 /etc/apache2/sites-enabled
-chmod 664 /etc/apache2/sites-available/*
+# chmod 775 /etc/apache2/sites-available
+# chmod 775 /etc/apache2/sites-enabled
+# chmod 664 /etc/apache2/sites-available/*
