@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Variables
+BASENAME=$1
+SA_DIR=/etc/apache2/sites-available
+
+# if not sudo...
+if [ $? != 0 ] ; then echo "Error: Run as sudo" ; exit 1; fi
+
+# do you really want to do this?
+while true; do
+    read -p 'This is an irreversible action. Proceed? (y/n) ' yn
+    case $yn in
+        [Yy]* ) echo "Onward!"; break;;
+        [Nn]* ) echo "Ok, nothing has been changed."; exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+# disable the site
+a2dissite $BASENAME
+
+# delete the directory from /var/www
+rm -R /var/www/${BASENAME}
+
+# remove the config file from /etc/apache2/sites-available
+rm /etc/apache2/sites-available/${BASENAME}.conf
+
+# restart apache2
+service apache2 reload
+service apache2 restart
