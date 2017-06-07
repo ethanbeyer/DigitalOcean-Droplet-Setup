@@ -10,7 +10,13 @@
 
 1. Follow through with [this article][1]
 2. Run `mysql_secure_installation`
-3. [Create a server mysql user][2]
+3. [Create a server mysql user][2]:
+```
+CREATE USER 'stonewall2.1'@'localhost' IDENTIFIED BY '.2938u—(u4hnsl$123iu099293+)@#1293uhLAS@!';
+GRANT ALL PRIVILEGES ON * . * TO 'stonewall2.1'@'localhost';
+FLUSH PRIVILEGES;
+```
+
 4. Log out as `root`
 
 ## Fine-grained Server Configuration
