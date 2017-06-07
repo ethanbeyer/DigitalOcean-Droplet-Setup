@@ -28,15 +28,17 @@ To completely wipe a site from the server, run `sudo wipesite example.com`
 ## User Setup
   - Log in as the `serveruser` created above
   - Run `$ sudo visudo` and add `serveruser ALL = NOPASSWD : ALL` so that running `sudo` commands does not require a password.
-  - Add this repo to `/home/serveruser`
-  - Run `sudo chmod +x ~/bin/*`
 
 ## Installations
 ### essentials
+    cd
     sudo apt-get update
     sudo apt-get install build-essential
     sudo apt-get install zip
     sudo apt-get install unzip
+
+### git
+    sudo apt-get install git
 
 ### PHP extensions
     sudo apt-get install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
@@ -69,6 +71,9 @@ Put this in that file: `15 3 * * * /usr/bin/certbot renew --quiet`
     php composer-setup.php
     php -r "unlink('composer-setup.php');"
 
+### /home/user/bin
+    sudo git clone https://github.com/ethanbeyer/DigitalOcean-Droplet-Setup.git
+    sudo chmod +x ~/bin/*
 
 ## Installation Cleanup
     sudo apt-get dist-upgrade
