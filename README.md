@@ -35,6 +35,8 @@ To completely wipe a site from the server, run `sudo wipesite example.com`
 ### essentials
     sudo apt-get update
     sudo apt-get install build-essential
+    sudo apt-get install zip
+    sudo apt-get install unzip
 
 ### PHP extensions
     sudo apt-get install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
