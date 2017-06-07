@@ -13,7 +13,7 @@
 3. [Create a server mysql user][2]:
 ```
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON * . * TO 'stonewall2.1'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
